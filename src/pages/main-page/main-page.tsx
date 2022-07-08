@@ -1,14 +1,14 @@
-import React from "react";
-import Marquee from "react-fast-marquee";
-import { Link } from "react-router-dom";
+import { FC } from 'react';
+import Marquee from 'react-fast-marquee';
+import { Link } from 'react-router-dom';
 
-import styles from "./main-page.module.css";
+import styles from './main-page.module.css';
 
 interface MainPageProps {
   extraClass?: string;
 }
 
-export const MainPage: React.FC<MainPageProps> = ({ extraClass = "" }) => {
+export const MainPage: FC<MainPageProps> = ({ extraClass = '' }) => {
   return (
     <main className={`${styles.content} ${extraClass}`}>
       <div className={styles.title_box}>
@@ -22,22 +22,22 @@ export const MainPage: React.FC<MainPageProps> = ({ extraClass = "" }) => {
         </p>
       </div>
       <div className={styles.cards_box}>
-        <Link className={styles.link} to="/recursion">
+        <Link className={styles.link} to='/recursion'>
           <div className={`${styles.card} ${styles.string}`} />
         </Link>
-        <Link className={styles.link} to="/fibonacci">
+        <Link className={styles.link} to='/fibonacci'>
           <div className={`${styles.card} ${styles.fibonacci}`} />
         </Link>
-        <Link className={styles.link} to="/sorting">
+        <Link className={styles.link} to='/sorting'>
           <div className={`${styles.card} ${styles.arr}`} />
         </Link>
-        <Link className={styles.link} to="/stack">
+        <Link className={styles.link} to='/stack'>
           <div className={`${styles.card} ${styles.stack}`} />
         </Link>
-        <Link className={styles.link} to="/queue">
+        <Link className={styles.link} to='/queue'>
           <div className={`${styles.card} ${styles.queue}`} />
         </Link>
-        <Link className={styles.link} to="/list">
+        <Link className={styles.link} to='/list'>
           <div className={`${styles.card} ${styles.list}`} />
         </Link>
       </div>
@@ -54,7 +54,7 @@ export const MainPage: React.FC<MainPageProps> = ({ extraClass = "" }) => {
       <p
         className={`text text_type_column text_color_input mt-14 ${styles.copyright}`}
       >
-        © Сделано в Практикуме.
+        © Mikhail Nenashev
       </p>
     </main>
   );
