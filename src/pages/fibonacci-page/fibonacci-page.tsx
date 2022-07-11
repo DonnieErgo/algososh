@@ -21,13 +21,13 @@ export const FibonacciPage: FC = () => {
     e.preventDefault()
 
     setInProgress(true)
-    await caclulateFibonacci(input)
+    await getFibonacciNumbers(input)
 
     setInput(0)
     setInProgress(false)
   }
 
-  const caclulateFibonacci = async (number: number) => {
+  const getFibonacciNumbers = async (number: number) => {
     let x = 1,
         y = 0,
         z

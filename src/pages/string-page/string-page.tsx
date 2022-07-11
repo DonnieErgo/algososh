@@ -10,8 +10,8 @@ import { ElementStates } from '../../types/element-states'
 import { DELAY_IN_MS } from '../../constants/delays';
 
 interface ICharacter {
-  character: string;
-  state: ElementStates;
+  character: string
+  state: ElementStates
 }
 
 export const StringPage: FC = () => {
@@ -52,7 +52,7 @@ export const StringPage: FC = () => {
       arr[counter].state = ElementStates.Modified
       arr[arr.length - counter - 1].state = ElementStates.Modified;
 
-      // swap elements
+      // swap elements, could use some elegance
       [arr[counter], arr[arr.length - counter - 1]] = [arr[arr.length - counter - 1], arr[counter]]
       setStringArr([...arr])
 

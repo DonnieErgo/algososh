@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './input-container.module.css';
 
 type TInputContainer = {
-  children: React.ReactNode;
+  children: ReactNode;
+  extraClass?: string;
 };
 
-export const InputContainer: FC<TInputContainer> = ({ children }) => {
-  return <div className={styles.container}>{children}</div>;
+export const InputContainer: FC<TInputContainer> = ({ children, extraClass = '', }) => {
+  return <div className={`${styles.container} ${extraClass}`}>{children}</div>;
 };
