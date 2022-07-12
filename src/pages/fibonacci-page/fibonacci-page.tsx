@@ -1,10 +1,10 @@
 import { SyntheticEvent, useState, FC } from 'react';
-import styles from './fibonacci-page.module.css'
+import styles from './fibonacci-page.module.css';
 import { SolutionLayout } from '../../components/ui/solution-layout/solution-layout';
 import { Button } from '../../components/ui/button/button';
 import { Circle } from '../../components/ui/circle/circle';
 import { Input } from '../../components/ui/input/input';
-import { InputContainer } from '../../components/ui/input-container/input-container'
+import { InputContainer } from '../../components/ui/input-container/input-container';
 import { delay } from '../../utils/utils';
 import { SHORT_DELAY_IN_MS } from '../../constants/delays';
 
@@ -69,13 +69,13 @@ export const FibonacciPage: FC = () => {
         </InputContainer>
       </form>
 
-        <ul className={styles.circleContainer}>
-            {arr && arr.map((item, index) => 
-              <li key={index}>
-                <Circle letter={item+''} index={index}/>
-              </li>
-            )}
-        </ul>
+      <ul className={styles.circleContainer}>
+          {arr && arr.map((item, index) => 
+            <li key={index}>
+              <Circle letter={item+''} index={index}/>
+            </li>
+          )}
+      </ul>
 
     </SolutionLayout>
   );

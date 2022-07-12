@@ -1,12 +1,12 @@
 import { SyntheticEvent, useState, FC } from 'react';
-import styles from './string-page.module.css'
+import styles from './string-page.module.css';
 import { SolutionLayout } from '../../components/ui/solution-layout/solution-layout';
 import { Button } from '../../components/ui/button/button';
 import { Circle } from '../../components/ui/circle/circle';
 import { Input } from '../../components/ui/input/input';
-import { InputContainer } from '../../components/ui/input-container/input-container'
+import { InputContainer } from '../../components/ui/input-container/input-container';
 import { delay } from '../../utils/utils';
-import { ElementStates } from '../../types/element-states'
+import { ElementStates } from '../../types/element-states';
 import { DELAY_IN_MS } from '../../constants/delays';
 
 interface ICharacter {

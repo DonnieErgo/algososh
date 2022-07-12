@@ -153,13 +153,13 @@ export const SortingPage: FC = () => {
         </InputContainer>
       </form>
 
-        <ul className={styles.columnContainer}>
-            {randomArr && randomArr.map((item, index) => 
-              <li key={index}>
-                <Column index={item.num} state={item.state}/>
-              </li>
-            )}
-        </ul>
+      <ul className={styles.columnContainer}>
+          {randomArr && randomArr.map((item, index) => 
+            <li key={index}>
+              <Column index={item.num} state={item.state}/>
+            </li>
+          )}
+      </ul>
 
     </SolutionLayout>
   );
