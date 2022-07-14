@@ -1,57 +1,80 @@
 interface IQueue<T> {
-  enqueue: (item: T) => void;
-  dequeue: () => void;
-  peak: () => T | null;
+  enqueue: (item: T) => void
+  dequeue: () => void
+  peak: () => T | null
+  getHead: () => number
+  getTail: () => number
 }
 
 export class Queue<T> implements IQueue<T> {
-  private container: (T | null)[] = [];
-  private head = 0;
-  private tail = 0;
-  private readonly size: number = 0;
-  private length: number = 0;
+  private container: (T | null)[] = []
+  private head = 0
+  private tail = 0
+  private readonly size: number = 0
+  private length: number = 0
 
   constructor(size: number) {
-    this.size = size;
-    this.container = Array(size);
+    this.size = size
+    this.container = Array(size)
   }
 
   enqueue = (item: T) => {
     if (this.length >= this.size) {
-      throw new Error("Maximum length exceeded");
+      throw new Error("Maximum length exceeded")
     }
 
-    this.container[this.tail % this.size] = item;
-    this.tail++;
-    this.length++;
-  };
+    this.container[this.tail] = item
+    this.tail++
+    this.length++
+  }
 
   dequeue = () => {
     if (this.isEmpty()) {
-      throw new Error("No elements in the queue");
+      throw new Error("No elements in the queue")
     }
 
-    this.container[this.head % this.size] = null
-    this.head++;
-    this.length--;
+    if (this.head === this.size) {
+      this.head = 0
+    }
+    this.container[this.head] = null
+    this.length--
+    this.head++
   };
 
   peak = (): T | null => {
     if (this.isEmpty()) {
-      throw new Error("No elements in the queue");
+      throw new Error("No elements in the queue")
     }
     
-    if (!this.isEmpty()) return this.container[this.head];
+    if (!this.isEmpty()) return this.container[this.head]
     
-    return null;
-  };
+    return null
+  }
 
-  isEmpty = () => this.length === 0;
+  getHead = () => {
+    if (this.isEmpty()) {
+      throw new Error('No elements in the queue')
+    }
+    return this.head
+  }
+
+  getTail = () => {
+    if (this.isEmpty()) {
+      throw new Error('No elements in the queue')
+    }
+    return this.tail - 1
+  }
+
+  isEmpty = () => this.length === 0
+
+  isFull = () => this.tail - 1 === 6
+
+  getLength = () => this.length
 
   clear = () => {
-    this.head = 0;
-    this.tail = 0;
-    this.length = 0;
-    this.container = [];
+    this.head = 0
+    this.tail = 0
+    this.length = 0
+    this.container = []
   }
 }

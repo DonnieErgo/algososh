@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState, FC } from 'react';
+import { SyntheticEvent, useState, FC, FormEvent } from 'react';
 import styles from './stack-page.module.css';
 import { SolutionLayout } from '../../components/ui/solution-layout/solution-layout';
 import { Button } from '../../components/ui/button/button';
@@ -9,7 +9,6 @@ import { delay } from '../../utils/utils';
 import { SHORT_DELAY_IN_MS } from '../../constants/delays';
 import { Stack } from '../../utils/stack';
 import { ElementStates } from '../../types/element-states';
-import { strictEqual } from 'assert';
 
 interface IStackItem {
   text: string | null,
@@ -27,7 +26,7 @@ export const StackPage: FC = () => {
     setInput(e.currentTarget.value)
   }
 
-  const addStackItem = async (e: React.FormEvent<HTMLFormElement>) => {
+  const addStackItem = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setInProgress(true)
 
@@ -74,6 +73,7 @@ export const StackPage: FC = () => {
 
   return (
     <SolutionLayout title='Стек'>
+
       <form onSubmit={addStackItem}>
         <InputContainer extraClass={styles.inputContainer}>
           <Input
@@ -108,7 +108,7 @@ export const StackPage: FC = () => {
             {stackArr && stackArr.map((item, index) => 
               <li key={index}>
                 <Circle letter={item.text || ''} index={index} state={item.state}
-                head={stackArr.length - 1 === index ? 'top' : ''}/>
+                  head={stackArr.length - 1 === index ? 'top' : ''}/>
               </li>
             )}
       </ul>
