@@ -68,6 +68,7 @@ export const StringPage: FC = () => {
       <form onSubmit={handleFormSubmit}>
         <InputContainer>
           <Input
+            value={input}
             onChange={(e) => changeInput(e) }
             isLimitText={true} 
             maxLength={11}

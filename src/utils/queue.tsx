@@ -19,9 +19,7 @@ export class Queue<T> implements IQueue<T> {
   }
 
   enqueue = (item: T) => {
-    if (this.length >= this.size) {
-      throw new Error("Maximum length exceeded")
-    }
+    if (this.length >= this.size) throw new Error("Maximum length exceeded")
 
     this.container[this.tail] = item
     this.tail++
@@ -29,9 +27,7 @@ export class Queue<T> implements IQueue<T> {
   }
 
   dequeue = () => {
-    if (this.isEmpty()) {
-      throw new Error("No elements in the queue")
-    }
+    if (this.isEmpty()) throw new Error("No elements in the queue")
 
     if (this.head === this.size) {
       this.head = 0
@@ -42,9 +38,7 @@ export class Queue<T> implements IQueue<T> {
   };
 
   peak = (): T | null => {
-    if (this.isEmpty()) {
-      throw new Error("No elements in the queue")
-    }
+    if (this.isEmpty()) throw new Error("No elements in the queue")
     
     if (!this.isEmpty()) return this.container[this.head]
     
@@ -52,16 +46,12 @@ export class Queue<T> implements IQueue<T> {
   }
 
   getHead = () => {
-    if (this.isEmpty()) {
-      throw new Error('No elements in the queue')
-    }
+    if (this.isEmpty()) throw new Error('No elements in the queue')
     return this.head
   }
 
   getTail = () => {
-    if (this.isEmpty()) {
-      throw new Error('No elements in the queue')
-    }
+    if (this.isEmpty()) throw new Error('No elements in the queue')
     return this.tail - 1
   }
 

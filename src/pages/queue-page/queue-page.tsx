@@ -17,10 +17,9 @@ interface IQueueItem {
   head: boolean
 }
 
-const queueLength: number = 7
-const queue = new Queue<string>(queueLength)
-
 export const QueuePage: FC = () => {
+  const queueLength = 7
+  const queue = new Queue<string>(queueLength)
 
   const defaultQueueArr: IQueueItem[] = [...Array(queueLength)].map(_ => ({
     text: '',
@@ -31,11 +30,12 @@ export const QueuePage: FC = () => {
 
   const [input, setInput] = useState<string>('')
   const [isQueueActive, setQueueActive] = useState<boolean>(false)
-  const [queueArr, setQueuequeueArr] = useState<IQueueItem[]>(defaultQueueArr)
+  const [queueArr, setQueueArr] = useState<IQueueItem[]>(defaultQueueArr)
   const [inProgress, setInProgress] = useState<boolean>(false)
 
   useEffect(() => {
     setQueueActive(!queue.isEmpty())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inProgress])
 
   const changeInput = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -87,7 +87,7 @@ export const QueuePage: FC = () => {
     setInProgress(true)
     await delay(SHORT_DELAY_IN_MS)
     queue.clear()
-    setQueuequeueArr(defaultQueueArr)
+    setQueueArr(defaultQueueArr)
     setInProgress(false)
   }
 

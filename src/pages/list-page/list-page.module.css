@@ -1,20 +1,54 @@
 .inputContainer {
+  flex-direction: column;
+  align-items: center;
+}
+
+.controlsContainer {
+  display: flex;
+  gap: 12px;
   justify-content: center;
-  flex-flow: row wrap;
+  
+}
+
+.buttonSmall {
+  min-width: 175px;
+}
+
+.buttonLarge {
+  min-width: 362px;
 }
 
 .input {
-  max-width: 377px;
+  max-width: 204px;
 }
 
 .circleContainer {
   display: flex;
   flex-flow: row wrap;
-  margin: 48px auto 0;
-  max-width: 944px;
-  justify-content: center;
-  row-gap: 50px;
-  column-gap: 16px;
+  list-style: none;
+  margin: 104px auto 0;
   padding: 0;
-  list-style-type: none;
+  justify-content: center;
+  gap: 16px;
+}
+
+.circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.smallCircle {
+  position: absolute;
+  left: 12px;
+}
+
+.topCircle {
+  top: -64px;
+}
+
+.bottomCircle {
+  bottom: -90px;
+  left: 52px;
 }

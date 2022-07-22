@@ -15,9 +15,8 @@ interface IStackItem {
   state: ElementStates;
 }
 
-const stack = new Stack<string>()
-
 export const StackPage: FC = () => {
+  const stack = new Stack<string>()
   const [input, setInput] = useState<string>('')
   const [inProgress, setInProgress] = useState<boolean>(false)
   const [stackArr, setStackArr] = useState<IStackItem[]>([])
