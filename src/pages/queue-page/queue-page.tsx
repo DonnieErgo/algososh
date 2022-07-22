@@ -17,10 +17,10 @@ interface IQueueItem {
   head: boolean
 }
 
-export const QueuePage: FC = () => {
-  const queueLength = 7
-  const queue = new Queue<string>(queueLength)
+const queueLength = 7
+const queue = new Queue<string>(queueLength)
 
+export const QueuePage: FC = () => {
   const defaultQueueArr: IQueueItem[] = [...Array(queueLength)].map(_ => ({
     text: '',
     state: ElementStates.Default,
@@ -37,6 +37,8 @@ export const QueuePage: FC = () => {
     setQueueActive(!queue.isEmpty())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inProgress])
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => e.preventDefault()
 
   const changeInput = (e: SyntheticEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value)
@@ -94,7 +96,7 @@ export const QueuePage: FC = () => {
   return (
     <SolutionLayout title='Очередь'>
 
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <InputContainer extraClass={styles.inputContainer}>
           <Input
             value={input}

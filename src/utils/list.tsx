@@ -28,7 +28,7 @@ export class LinkedList<T> implements ILinkedList<T> {
   }
 
   find = (index: number) => {
-    if (index < 0 || index > this.size) throw new Error('Enter a valid index')
+    if (index < 0 || index > this.size) console.log('Enter a valid index')
 
     let currentNode = this.head
     let count = 0
@@ -46,7 +46,7 @@ export class LinkedList<T> implements ILinkedList<T> {
   }
 
   removeAt = (index: number) => {
-    if (index < 0 || index > this.size) throw new Error('Enter a valid index')
+    if (index < 0 || index > this.size) console.log('Enter a valid index')
 
     let curr = this.head
 
@@ -67,7 +67,7 @@ export class LinkedList<T> implements ILinkedList<T> {
   }
 
   insertAt = (element: T, index: number) => {
-    if (index < 0 || index > this.getSize()) throw new Error('Enter a valid index')
+    if (index < 0 || index > this.getSize()) console.log('Enter a valid index')
     else {
       const node = new Node(element)
 

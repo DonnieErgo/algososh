@@ -36,6 +36,8 @@ export const ListPage: FC = () => {
   const [listArr, setListArr] = useState<IListItem[]>(defaultListArr)
   const list = new LinkedList<string>(initialList)
 
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => e.preventDefault()
+
   const changeValue = (e: SyntheticEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value)
   }
@@ -265,7 +267,7 @@ export const ListPage: FC = () => {
     <SolutionLayout title='Связный список'>
 
       <InputContainer extraClass={styles.inputContainer}>
-        <form className={styles.controlsContainer}>
+        <form className={styles.controlsContainer} onSubmit={handleFormSubmit}>
           <Input
             placeholder="Введите значение"
             extraClass={styles.input}
@@ -307,7 +309,7 @@ export const ListPage: FC = () => {
             onClick={removeFromTail}
           />
         </form>
-        <form className={styles.controlsContainer}>
+        <form className={styles.controlsContainer} onSubmit={handleFormSubmit}>
           <Input
             placeholder="Введите индекс"
             extraClass={styles.input}
@@ -322,7 +324,7 @@ export const ListPage: FC = () => {
             extraClass={styles.buttonLarge}
             isLoader={inProgress}
             onClick={addWithIndex}
-            disabled={value === '' || !index || listArr.length >= 8 || index > listArr.length}
+            disabled={value === '' || !index || listArr.length >= 8 || index > listArr.length-1}
           />
           <Button
             text="Удалить по индексу"
@@ -330,7 +332,7 @@ export const ListPage: FC = () => {
             extraClass={styles.buttonLarge}
             isLoader={inProgress}
             onClick={removeWithIndex}
-            disabled={listArr.length <= 1 || !index || index > listArr.length}
+            disabled={listArr.length <= 1 || !index || index > listArr.length-1}
           />
         </form>
       </InputContainer>

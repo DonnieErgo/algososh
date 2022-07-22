@@ -62,7 +62,7 @@ export const FibonacciPage: FC = () => {
             type={'number'}
             max={19}/>
           <Button
-            disabled={input === 0} 
+            disabled={input === 0 || input > 19} 
             text='Рассчитать'
             type='submit'
             isLoader={inProgress}/>
