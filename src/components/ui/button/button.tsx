@@ -1,23 +1,23 @@
-import React from "react";
-import styles from "./button.module.css";
-import loaderIcon from "../../../images/icons/loader.svg";
-import { AscendingIcon } from "../icons/ascending-icon";
-import { DescendingIcon } from "../icons/descending-icon";
-import { Direction } from "../../../types/direction";
+import React from 'react';
+import styles from './button.module.css';
+import loaderIcon from '../../../images/icons/loader.svg';
+import { AscendingIcon } from '../icons/ascending-icon';
+import { DescendingIcon } from '../icons/descending-icon';
+import { Direction } from '../../../types/direction';
 
 interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   text?: string;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   sorting?: Direction;
-  linkedList?: "small" | "big";
+  linkedList?: 'small' | 'big';
   isLoader?: boolean;
   extraClass?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   text,
-  extraClass = "",
-  type = "button",
+  extraClass = '',
+  type = 'button',
   isLoader = false,
   sorting,
   linkedList,
@@ -40,11 +40,11 @@ export const Button: React.FC<ButtonProps> = ({
       {...rest}
     >
       {isLoader ? (
-        <img className={styles.loader_icon} src={loaderIcon} alt="Загрузка." />
+        <img className={styles.loader_icon} src={loaderIcon} alt='Загрузка.' />
       ) : (
         <>
           {sorting && currentIcon}
-          <p className={`text ${sorting && "ml-5"}`}>{text}</p>
+          <p className={`text ${sorting && 'ml-5'}`}>{text}</p>
         </>
       )}
     </button>
