@@ -34,13 +34,14 @@ export const StackPage: FC = () => {
       text: stack.peak(),
       state: ElementStates.Changing,
     });
-    setInput('')
+    
     setStackArr([...stackArr])
 
     await delay(SHORT_DELAY_IN_MS)
 
     stackArr[stackArr.length - 1].state = ElementStates.Default
     setStackArr([...stackArr])
+    setInput('')
     setInProgress(false)
   }
 
@@ -81,25 +82,29 @@ export const StackPage: FC = () => {
             isLimitText={true} 
             maxLength={4}
             disabled={inProgress}
-            extraClass={styles.input}/>
+            extraClass={styles.input}
+            data-cy='input'/>
           <Button
             disabled={input === ''} 
             text='Добавить'
             type='submit'
-            isLoader={inProgress}/>
+            isLoader={inProgress}
+            data-cy='submit'/>
           <Button
             disabled={!stackArr.length} 
             text='Удалить'
             type='button'
             isLoader={inProgress}
             extraClass={styles.buttonMargin}
-            onClick={deleteStackItem}/>
+            onClick={deleteStackItem}
+            data-cy='delete'/>
           <Button
             disabled={!stackArr.length} 
             text='Очистить'
             type='reset'
             isLoader={inProgress}
-            onClick={clearStack}/>
+            onClick={clearStack}
+            data-cy='clear'/>
         </InputContainer>
       </form>
 

@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState, FC, useEffect } from 'react';
+import { SyntheticEvent, useState, FC } from 'react';
 import { SolutionLayout } from '../../components/ui/solution-layout/solution-layout';
 import styles from './list-page.module.css';
 import { Button } from '../../components/ui/button/button';
@@ -167,7 +167,7 @@ export const ListPage: FC = () => {
     setInProgress(false)
   }
 
-  const addWithIndex = async () => {
+  const addByIndex = async () => {
     setInProgress(true)
     list.insertAt(value, index)
 
@@ -217,7 +217,7 @@ export const ListPage: FC = () => {
     setInProgress(false)
   }
 
-  const removeWithIndex = async () => {
+  const deleteByIndex = async () => {
     setInProgress(true)
     list.removeAt(index)
 
@@ -275,7 +275,9 @@ export const ListPage: FC = () => {
             value={value}
             disabled={inProgress}
             isLimitText={true}
-            maxLength={4}/>
+            maxLength={4}
+            data-cy='input'
+          />
           <Button
             text="Добавить в head"
             type="button"
@@ -283,6 +285,7 @@ export const ListPage: FC = () => {
             isLoader={inProgress}
             disabled={value === '' || listArr.length >= 8}
             onClick={addToHead}
+            data-cy='addToHead'
           />
           <Button
             text="Добавить в tail"
@@ -291,6 +294,7 @@ export const ListPage: FC = () => {
             isLoader={inProgress}
             disabled={value === '' || listArr.length >= 8}
             onClick={addToTail}
+            data-cy='addToTail'
           />
           <Button
             text="Удалить из head"
@@ -299,6 +303,7 @@ export const ListPage: FC = () => {
             isLoader={inProgress}
             disabled={listArr.length <= 1}
             onClick={removeFromHead}
+            data-cy='deleteFromHead'
             />
           <Button
             text="Удалить из tail"
@@ -307,6 +312,7 @@ export const ListPage: FC = () => {
             isLoader={inProgress}
             disabled={listArr.length <= 1}
             onClick={removeFromTail}
+            data-cy='deleteFromTail'
           />
         </form>
         <form className={styles.controlsContainer} onSubmit={handleFormSubmit}>
@@ -317,22 +323,25 @@ export const ListPage: FC = () => {
             onChange={changeIndex}
             disabled={inProgress}
             value={index || ''}
+            data-cy='indexInput'
           />
           <Button
             text="Добавить по индексу"
             type="button"
             extraClass={styles.buttonLarge}
             isLoader={inProgress}
-            onClick={addWithIndex}
+            onClick={addByIndex}
             disabled={value === '' || !index || listArr.length >= 8 || index > listArr.length-1}
+            data-cy='addByIndex'
           />
           <Button
             text="Удалить по индексу"
             type="button"
             extraClass={styles.buttonLarge}
             isLoader={inProgress}
-            onClick={removeWithIndex}
+            onClick={deleteByIndex}
             disabled={listArr.length <= 1 || !index || index > listArr.length-1}
+            data-cy='deleteByIndex'
           />
         </form>
       </InputContainer>

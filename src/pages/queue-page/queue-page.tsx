@@ -6,7 +6,7 @@ import { Circle } from '../../components/ui/circle/circle';
 import { Input } from '../../components/ui/input/input';
 import { InputContainer } from '../../components/ui/input-container/input-container';
 import { delay } from '../../utils/utils';
-import { SHORT_DELAY_IN_MS } from '../../constants/delays';
+import { SHORT_DELAY_IN_MS, DELAY_IN_MS } from '../../constants/delays';
 import { Queue } from '../../utils/queue';
 import { ElementStates } from '../../types/element-states';
 
@@ -52,12 +52,14 @@ export const QueuePage: FC = () => {
 
     if (queue.getTail() > 0) queueArr[queue.getTail() - 1].tail = false
     
-    queueArr[queue.getTail()].text = input
-    queueArr[queue.getTail()].tail = true
-    queueArr[queue.getTail()].state = ElementStates.Changing
+    queueArr[queue.getTail()] = {
+      ...queueArr[queue.getTail()],
+      text: input,
+      tail: true,
+      state: ElementStates.Changing}
     
-    await delay(SHORT_DELAY_IN_MS)
-    
+    await delay(DELAY_IN_MS)
+
     queueArr[queue.getTail()].state = ElementStates.Default
 
     setInput('')
@@ -104,26 +106,30 @@ export const QueuePage: FC = () => {
             isLimitText={true} 
             maxLength={4}
             disabled={inProgress}
-            extraClass={styles.input}/>
+            extraClass={styles.input}
+            data-cy='input'/>
           <Button
             disabled={input === '' || queue.getLength() >= 7 || queue.isFull()} 
             text='Добавить'
             type='button'
             isLoader={inProgress}
-            onClick={addQueueItem}/>
+            onClick={addQueueItem}
+            data-cy='submit'/>
           <Button
             disabled={!isQueueActive} 
             text='Удалить'
             type='button'
             isLoader={inProgress}
             extraClass={styles.buttonMargin}
-            onClick={deleteQueueItem}/>
+            onClick={deleteQueueItem}
+            data-cy='delete'/>
           <Button
             disabled={!isQueueActive} 
             text='Очистить'
             type='reset'
             isLoader={inProgress}
-            onClick={clearQueue}/>
+            onClick={clearQueue}
+            data-cy='clear'/>
         </InputContainer>
       </form>
 

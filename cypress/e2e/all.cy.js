@@ -1,0 +1,6 @@
+import './pages.cy'
+import './string.cy'
+import './fibonacci.cy'
+import './stack.cy'
+import './queue.cy'
+import './list.cy'

@@ -60,12 +60,15 @@ export const FibonacciPage: FC = () => {
             disabled={inProgress}
             extraClass={styles.input}
             type={'number'}
-            max={19}/>
+            max={19}
+            value={input}
+            data-cy='input'/>
           <Button
             disabled={input === 0 || input > 19} 
             text='Рассчитать'
             type='submit'
-            isLoader={inProgress}/>
+            isLoader={inProgress}
+            data-cy='submit'/>
         </InputContainer>
       </form>
 
