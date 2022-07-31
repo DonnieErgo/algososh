@@ -5,15 +5,11 @@ import { Button } from '../../components/ui/button/button';
 import { Column } from '../../components/ui/column/column';
 import { InputContainer } from '../../components/ui/input-container/input-container'
 import { RadioInput } from '../../components/ui/radio-input/radio-input'
-import { delay, randomNum } from '../../utils/utils';
-import { SHORT_DELAY_IN_MS } from '../../constants/delays';
+import { randomNum } from '../../utils/utils';
 import { Direction } from '../../types/direction';
-import { ElementStates } from '../../types/element-states'
-
-interface IArrObject {
-  num: number
-  state: ElementStates
-}
+import { ElementStates } from '../../types/element-states';
+import { IArrObject } from '../../types/types';
+import { bubbleSort, selectionSort } from '../../utils/sort';
 
 export const SortingPage: FC = () => {
   const [method, setMethod] = useState<string>('selection')
@@ -34,75 +30,6 @@ export const SortingPage: FC = () => {
     }))
 
     setArr(randomizedObjectArr)
-  }
-
-  const bubbleSort = async (arrangement: string, array: IArrObject[]) => {
-    setInProgress(true)
-
-    for (let i = 0; i < array.length; i++) {
-      for (let j = 0; j < array.length - i - 1; j++) {
-
-        array[j].state = ElementStates.Changing
-        if (array[j + 1]) array[j + 1].state = ElementStates.Changing
-        setArr([...array])
-
-        await delay(SHORT_DELAY_IN_MS)
-
-        if ((arrangement === 'asc' ? array[j].num : array[j + 1].num) > (arrangement === 'asc' ? array[j + 1].num : array[j].num)) {
-          const t = array[j]
-          array[j] = array[j + 1]
-          array[j + 1] = t
-        }
-
-        array[j].state = ElementStates.Default
-        if (array[j + 1]) array[j + 1].state = ElementStates.Default
-        setArr([...array])
-      }
-
-      array[array.length - i - 1].state = ElementStates.Modified
-      setArr([...array])
-    }
-
-    setInProgress(false)
-  }
-
-  const selectionSort = async (arrangement: string, array: IArrObject[]) => {
-    setInProgress(true)
-
-    for (let i = 0; i < array.length; i += 1) {
-
-      let ind = i
-      array[ind].state = ElementStates.Changing
-
-      for (let j = i + 1; j < array.length; j += 1) {
-
-        array[j].state = ElementStates.Changing
-        setArr([...array])
-
-        await delay(SHORT_DELAY_IN_MS)
-        
-        if ((arrangement === 'asc' ? array[ind].num : array[j].num) > (arrangement === 'asc' ? array[j].num : array[ind].num)) {
-          ind = j
-          array[j].state = ElementStates.Changing
-          array[ind].state = i === ind ? ElementStates.Changing : ElementStates.Default
-        }
-
-        if (j !== ind) array[j].state = ElementStates.Default
-
-        setArr([...array])
-      }
-
-      const t = array[i]
-      array[i] = array[ind]
-      array[ind] = t
-
-      array[ind].state = ElementStates.Default
-      array[i].state = ElementStates.Modified
-
-      setArr([...array])
-    }
-
-    setInProgress(false)
   }
 
   return (
@@ -133,7 +60,8 @@ export const SortingPage: FC = () => {
             isLoader={inProgress}
             disabled={inProgress}
             onClick={() =>
-            method === 'bubble' ? bubbleSort('asc', randomArr) : selectionSort('asc', randomArr) }/>
+            method === 'bubble' ? bubbleSort(randomArr, 'asc', setArr, setInProgress) 
+            : selectionSort(randomArr, 'asc', setArr, setInProgress) }/>
           <Button
             text='По убыванию'
             type='button'
@@ -142,7 +70,8 @@ export const SortingPage: FC = () => {
             disabled={inProgress}
             extraClass={`mr-40 ${styles.button}`}
             onClick={() =>
-            method === 'bubble' ? bubbleSort('desc', randomArr) : selectionSort('desc', randomArr) }/>
+            method === 'bubble' ? bubbleSort(randomArr, 'desc', setArr, setInProgress) 
+            : selectionSort(randomArr, 'desc', setArr, setInProgress) }/>
           <Button
             text='Новый массив'
             type='button'

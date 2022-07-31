@@ -5,14 +5,9 @@ import { Button } from '../../components/ui/button/button';
 import { Circle } from '../../components/ui/circle/circle';
 import { Input } from '../../components/ui/input/input';
 import { InputContainer } from '../../components/ui/input-container/input-container';
-import { delay } from '../../utils/utils';
 import { ElementStates } from '../../types/element-states';
-import { DELAY_IN_MS } from '../../constants/delays';
-
-interface ICharacter {
-  character: string
-  state: ElementStates
-}
+import { reverseString } from '../../utils/string';
+import { ICharacter } from '../../types/types'
 
 export const StringPage: FC = () => {
   const [input, setInput] = useState<string>('')
@@ -27,39 +22,14 @@ export const StringPage: FC = () => {
     e.preventDefault()
     setInProgress(true)
 
-    const strInputArr = input.split('').map((char, i) => {
-      return { 
-        character: char, 
-        state: ElementStates.Default }
-    })
+    const strInputArr = input.split('').map(char => ({
+      character: char, 
+      state: ElementStates.Default 
+    }))
 
-    await reverseString(strInputArr)
+    await reverseString(strInputArr, setStringArr)
     setInput('')
     setInProgress(false)
-  }
-
-  const reverseString = async (arr: ICharacter[]) => {
-    const midPoint = arr.length / 2
-    let counter = 0
-
-    while (counter < midPoint) {
-      arr[counter].state = ElementStates.Changing
-      arr[arr.length - counter - 1].state = ElementStates.Changing
-      setStringArr([...arr])
-
-      await delay(DELAY_IN_MS)
-
-      arr[counter].state = ElementStates.Modified
-      arr[arr.length - counter - 1].state = ElementStates.Modified;
-
-      // swap elements, could use some elegance
-      [arr[counter], arr[arr.length - counter - 1]] = [arr[arr.length - counter - 1], arr[counter]]
-      setStringArr([...arr])
-
-      await delay(DELAY_IN_MS)
-
-      counter += 1
-    }
   }
 
   return (
@@ -73,12 +43,14 @@ export const StringPage: FC = () => {
             isLimitText={true} 
             maxLength={11}
             disabled={inProgress}
-            extraClass={styles.input}/>
+            extraClass={styles.input}
+            data-cy='input'/>
           <Button
             disabled={input.length < 2} 
             text='Развернуть'
             type='submit'
-            isLoader={inProgress}/>
+            isLoader={inProgress}
+            data-cy='submit'/>
         </InputContainer>
       </form>
 
