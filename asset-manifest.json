@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7f866d07.css",
+    "main.js": "/static/js/main.3da5fe2f.js",
+    "static/js/787.0d1937ff.chunk.js": "/static/js/787.0d1937ff.chunk.js",
+    "static/media/bg.jpg": "/static/media/bg.971318c52485d1963a30.jpg",
+    "static/media/arr-hover.svg": "/static/media/arr-hover.ac7db125d2d65323282d.svg",
+    "static/media/arr.svg": "/static/media/arr.4d656adde5b24b63a741.svg",
+    "static/media/fibonacci-hover.svg": "/static/media/fibonacci-hover.839d313aab30f0fba89b.svg",
+    "static/media/fibonacci.svg": "/static/media/fibonacci.78686abfcc8a9220a3ca.svg",
+    "static/media/list-hover.svg": "/static/media/list-hover.d2b01d8bd04d3026af9d.svg",
+    "static/media/queue-hover.svg": "/static/media/queue-hover.eb8064270a83c78aaaca.svg",
+    "static/media/list.svg": "/static/media/list.3f2e53e6f7ad1eee0984.svg",
+    "static/media/queue.svg": "/static/media/queue.c59f4fd37cd05f8927c1.svg",
+    "static/media/stack-hover.svg": "/static/media/stack-hover.be15d7ceb68347d4126f.svg",
+    "static/media/stack.svg": "/static/media/stack.cf7b800d4544bd42ef82.svg",
+    "static/media/string-hover.svg": "/static/media/string-hover.d9b5ec4fb2fb8c8cc0b8.svg",
+    "static/media/string.svg": "/static/media/string.cbaf0ce2a6c2c551bfd5.svg",
+    "index.html": "/index.html",
+    "static/media/loader.svg": "/static/media/loader.3560c7ba1c44b9900cfc03ff6ddbe067.svg",
+    "main.7f866d07.css.map": "/static/css/main.7f866d07.css.map",
+    "main.3da5fe2f.js.map": "/static/js/main.3da5fe2f.js.map",
+    "787.0d1937ff.chunk.js.map": "/static/js/787.0d1937ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7f866d07.css",
+    "static/js/main.3da5fe2f.js"
+  ]
+}
