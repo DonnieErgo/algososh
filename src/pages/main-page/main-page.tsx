@@ -13,12 +13,12 @@ export const MainPage: FC<MainPageProps> = ({ extraClass = '' }) => {
     <main className={`${styles.content} ${extraClass}`}>
       <div className={styles.title_box}>
         <h1 className={`text text_type_h1 text_color_h1 ${styles.title}`}>
-          МБОУ АЛГОСОШ
+          Fibonacci
         </h1>
         <p
           className={`text text_type_fibonacci text_color_secondary ${styles.fibonacci_title}`}
         >
-          им. Фибоначчи
+          AlgoSchool
         </p>
       </div>
       <div className={styles.cards_box}>
@@ -45,7 +45,7 @@ export const MainPage: FC<MainPageProps> = ({ extraClass = '' }) => {
         <p
           className={`text text_type_ticker text_color_secondary ${styles.ticker_text}`}
         >
-          Вдохновлено школами, в которых не учили алгоритмам
+          Inspired by schools that did not teach algorithms
         </p>
         <div className={styles.dot_box}>
           <p className={styles.dot} />

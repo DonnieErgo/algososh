@@ -51,13 +51,13 @@ export const QueuePage: FC = () => {
     queueArr[queue.getHead()].head = true
 
     if (queue.getTail() > 0) queueArr[queue.getTail() - 1].tail = false
-    
+
     queueArr[queue.getTail()] = {
       ...queueArr[queue.getTail()],
       text: input,
       tail: true,
       state: ElementStates.Changing}
-    
+
     await delay(DELAY_IN_MS)
 
     queueArr[queue.getTail()].state = ElementStates.Default
@@ -96,36 +96,36 @@ export const QueuePage: FC = () => {
   }
 
   return (
-    <SolutionLayout title='Очередь'>
+    <SolutionLayout title='Queue'>
 
       <form onSubmit={handleFormSubmit}>
         <InputContainer extraClass={styles.inputContainer}>
           <Input
             value={input}
             onChange={e => changeInput(e)}
-            isLimitText={true} 
+            isLimitText={true}
             maxLength={4}
             disabled={inProgress}
             extraClass={styles.input}
             data-cy='input'/>
           <Button
-            disabled={input === '' || queue.getLength() >= 7 || queue.isFull()} 
-            text='Добавить'
+            disabled={input === '' || queue.getLength() >= 7 || queue.isFull()}
+            text='Add'
             type='button'
             isLoader={inProgress}
             onClick={addQueueItem}
             data-cy='submit'/>
           <Button
-            disabled={!isQueueActive} 
-            text='Удалить'
+            disabled={!isQueueActive}
+            text='Remove'
             type='button'
             isLoader={inProgress}
             extraClass={styles.buttonMargin}
             onClick={deleteQueueItem}
             data-cy='delete'/>
           <Button
-            disabled={!isQueueActive} 
-            text='Очистить'
+            disabled={!isQueueActive}
+            text='Clean'
             type='reset'
             isLoader={inProgress}
             onClick={clearQueue}
@@ -134,14 +134,14 @@ export const QueuePage: FC = () => {
       </form>
 
       <ul className={styles.circleContainer}>
-            {queueArr && queueArr.map((item, index) => 
+            {queueArr && queueArr.map((item, index) =>
               <li key={index}>
                 <Circle letter={item.text} index={index} state={item.state}
                   head={item.head ? 'head' : ''}
                   tail={item.tail ? 'tail' : ''}/>
               </li>
             )}
-      </ul> 
+      </ul>
 
     </SolutionLayout>
   );

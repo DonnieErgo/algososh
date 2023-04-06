@@ -55,7 +55,7 @@ export const ListPage: FC = () => {
         state: ElementStates.Changing,
         positioning: 'topCircle',
     }
-    
+
     setListArr([...listArr])
     await delay(SHORT_DELAY_IN_MS)
 
@@ -71,7 +71,7 @@ export const ListPage: FC = () => {
 
     await delay(SHORT_DELAY_IN_MS)
     listArr[0].state = ElementStates.Default
-    
+
     setListArr([...listArr])
 
     setValue('')
@@ -118,7 +118,7 @@ export const ListPage: FC = () => {
 
   const removeFromHead = async () => {
     setInProgress(true)
-    
+
     const currValue = listArr[0].name
     listArr[0] = {
       ...listArr[0],
@@ -162,7 +162,7 @@ export const ListPage: FC = () => {
     await delay(SHORT_DELAY_IN_MS)
 
     listArr.pop()
-    setListArr([...listArr]) 
+    setListArr([...listArr])
 
     setInProgress(false)
   }
@@ -264,12 +264,12 @@ export const ListPage: FC = () => {
   }
 
   return (
-    <SolutionLayout title='Связный список'>
+    <SolutionLayout title='Linked list'>
 
       <InputContainer extraClass={styles.inputContainer}>
         <form className={styles.controlsContainer} onSubmit={handleFormSubmit}>
           <Input
-            placeholder="Введите значение"
+            placeholder="Enter value"
             extraClass={styles.input}
             onChange={changeValue}
             value={value}
@@ -279,7 +279,7 @@ export const ListPage: FC = () => {
             data-cy='input'
           />
           <Button
-            text="Добавить в head"
+            text="Add to head"
             type="button"
             extraClass={styles.buttonSmall}
             isLoader={inProgress}
@@ -288,7 +288,7 @@ export const ListPage: FC = () => {
             data-cy='addToHead'
           />
           <Button
-            text="Добавить в tail"
+            text="Add to tail"
             type="button"
             extraClass={styles.buttonSmall}
             isLoader={inProgress}
@@ -297,7 +297,7 @@ export const ListPage: FC = () => {
             data-cy='addToTail'
           />
           <Button
-            text="Удалить из head"
+            text="Remove from head"
             type="button"
             extraClass={styles.buttonSmall}
             isLoader={inProgress}
@@ -306,7 +306,7 @@ export const ListPage: FC = () => {
             data-cy='deleteFromHead'
             />
           <Button
-            text="Удалить из tail"
+            text="Remove from tail"
             type="button"
             extraClass={styles.buttonSmall}
             isLoader={inProgress}
@@ -317,7 +317,7 @@ export const ListPage: FC = () => {
         </form>
         <form className={styles.controlsContainer} onSubmit={handleFormSubmit}>
           <Input
-            placeholder="Введите индекс"
+            placeholder="Enter index"
             extraClass={styles.input}
             maxLength={1}
             onChange={changeIndex}
@@ -326,7 +326,7 @@ export const ListPage: FC = () => {
             data-cy='indexInput'
           />
           <Button
-            text="Добавить по индексу"
+            text="Add by index"
             type="button"
             extraClass={styles.buttonLarge}
             isLoader={inProgress}
@@ -335,7 +335,7 @@ export const ListPage: FC = () => {
             data-cy='addByIndex'
           />
           <Button
-            text="Удалить по индексу"
+            text="Remove by index"
             type="button"
             extraClass={styles.buttonLarge}
             isLoader={inProgress}

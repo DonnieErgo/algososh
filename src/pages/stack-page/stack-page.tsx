@@ -34,7 +34,7 @@ export const StackPage: FC = () => {
       text: stack.peak(),
       state: ElementStates.Changing,
     });
-    
+
     setStackArr([...stackArr])
 
     await delay(SHORT_DELAY_IN_MS)
@@ -72,35 +72,35 @@ export const StackPage: FC = () => {
   }
 
   return (
-    <SolutionLayout title='Стек'>
+    <SolutionLayout title='Stack'>
 
       <form onSubmit={addStackItem}>
         <InputContainer extraClass={styles.inputContainer}>
           <Input
             value={input}
             onChange={e => changeInput(e)}
-            isLimitText={true} 
+            isLimitText={true}
             maxLength={4}
             disabled={inProgress}
             extraClass={styles.input}
             data-cy='input'/>
           <Button
-            disabled={input === ''} 
-            text='Добавить'
+            disabled={input === ''}
+            text='Add'
             type='submit'
             isLoader={inProgress}
             data-cy='submit'/>
           <Button
-            disabled={!stackArr.length} 
-            text='Удалить'
+            disabled={!stackArr.length}
+            text='Remove'
             type='button'
             isLoader={inProgress}
             extraClass={styles.buttonMargin}
             onClick={deleteStackItem}
             data-cy='delete'/>
           <Button
-            disabled={!stackArr.length} 
-            text='Очистить'
+            disabled={!stackArr.length}
+            text='Clean'
             type='reset'
             isLoader={inProgress}
             onClick={clearStack}
@@ -109,7 +109,7 @@ export const StackPage: FC = () => {
       </form>
 
       <ul className={styles.circleContainer}>
-            {stackArr && stackArr.map((item, index) => 
+            {stackArr && stackArr.map((item, index) =>
               <li key={index}>
                 <Circle letter={item.text || ''} index={index} state={item.state}
                   head={stackArr.length - 1 === index ? 'top' : ''}/>

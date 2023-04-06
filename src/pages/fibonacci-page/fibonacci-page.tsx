@@ -38,7 +38,7 @@ export const FibonacciPage: FC = () => {
       z = x + y;
       x = y;
       y = z;
-  
+
       res.push(z);
 
       await delay(SHORT_DELAY_IN_MS)
@@ -49,13 +49,13 @@ export const FibonacciPage: FC = () => {
   }
 
   return (
-    <SolutionLayout title='Последовательность Фибоначчи'>
+    <SolutionLayout title='Fibonacci Sequence'>
 
       <form onSubmit={handleFormSubmit}>
         <InputContainer>
           <Input
             onChange={(e) => changeInput(e) }
-            isLimitText={true} 
+            isLimitText={true}
             maxLength={19}
             disabled={inProgress}
             extraClass={styles.input}
@@ -64,8 +64,8 @@ export const FibonacciPage: FC = () => {
             value={input}
             data-cy='input'/>
           <Button
-            disabled={input === 0 || input > 19} 
-            text='Рассчитать'
+            disabled={input === 0 || input > 19}
+            text='Calculate'
             type='submit'
             isLoader={inProgress}
             data-cy='submit'/>
@@ -73,7 +73,7 @@ export const FibonacciPage: FC = () => {
       </form>
 
       <ul className={styles.circleContainer}>
-          {arr && arr.map((item, index) => 
+          {arr && arr.map((item, index) =>
             <li key={index}>
               <Circle letter={item+''} index={index}/>
             </li>

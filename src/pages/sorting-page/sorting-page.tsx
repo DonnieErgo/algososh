@@ -33,7 +33,7 @@ export const SortingPage: FC = () => {
   }
 
   return (
-    <SolutionLayout title='Сортировка массива'>
+    <SolutionLayout title='Array sorting'>
 
       <form>
         <InputContainer extraClass={styles.inputContainer}>
@@ -41,7 +41,7 @@ export const SortingPage: FC = () => {
             onChange={() => setMethod('selection')}
             checked={method === 'selection'}
             name='sortMethod'
-            label='Выбор'
+            label='Selection'
             disabled={inProgress}
             extraClass={'mr-12'}
           />
@@ -49,31 +49,31 @@ export const SortingPage: FC = () => {
             onChange={() => setMethod('bubble')}
             checked={method === 'bubble'}
             name='sortMethod'
-            label='Пузырёк'
+            label='Bubble'
             disabled={inProgress}
             extraClass={styles.radioMargin}
           />
           <Button
-            text='По возрастанию'
+            text='Ascending'
             type='button'
             sorting={Direction.Ascending}
             isLoader={inProgress}
             disabled={inProgress}
             onClick={() =>
-            method === 'bubble' ? bubbleSort(randomArr, 'asc', setArr, setInProgress) 
+            method === 'bubble' ? bubbleSort(randomArr, 'asc', setArr, setInProgress)
             : selectionSort(randomArr, 'asc', setArr, setInProgress) }/>
           <Button
-            text='По убыванию'
+            text='Descending'
             type='button'
             sorting={Direction.Descending}
             isLoader={inProgress}
             disabled={inProgress}
             extraClass={`mr-40 ${styles.button}`}
             onClick={() =>
-            method === 'bubble' ? bubbleSort(randomArr, 'desc', setArr, setInProgress) 
+            method === 'bubble' ? bubbleSort(randomArr, 'desc', setArr, setInProgress)
             : selectionSort(randomArr, 'desc', setArr, setInProgress) }/>
           <Button
-            text='Новый массив'
+            text='New array'
             type='button'
             isLoader={inProgress}
             disabled={inProgress}
@@ -83,7 +83,7 @@ export const SortingPage: FC = () => {
       </form>
 
       <ul className={styles.columnContainer}>
-          {randomArr && randomArr.map((item, index) => 
+          {randomArr && randomArr.map((item, index) =>
             <li key={index}>
               <Column index={item.num} state={item.state}/>
             </li>

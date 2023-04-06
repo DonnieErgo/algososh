@@ -23,8 +23,8 @@ export const StringPage: FC = () => {
     setInProgress(true)
 
     const strInputArr = input.split('').map(char => ({
-      character: char, 
-      state: ElementStates.Default 
+      character: char,
+      state: ElementStates.Default
     }))
 
     await reverseString(strInputArr, setStringArr)
@@ -33,21 +33,21 @@ export const StringPage: FC = () => {
   }
 
   return (
-    <SolutionLayout title='Строка'>
+    <SolutionLayout title='String'>
 
       <form onSubmit={handleFormSubmit}>
         <InputContainer>
           <Input
             value={input}
             onChange={(e) => changeInput(e) }
-            isLimitText={true} 
+            isLimitText={true}
             maxLength={11}
             disabled={inProgress}
             extraClass={styles.input}
             data-cy='input'/>
           <Button
-            disabled={input.length < 2} 
-            text='Развернуть'
+            disabled={input.length < 2}
+            text='Reverse'
             type='submit'
             isLoader={inProgress}
             data-cy='submit'/>
@@ -55,7 +55,7 @@ export const StringPage: FC = () => {
       </form>
 
         <ul className={styles.circleContainer}>
-            {stringArr && stringArr.map((item, index) => 
+            {stringArr && stringArr.map((item, index) =>
               <li key={index}>
                 <Circle letter={item.character} state={item.state}/>
               </li>

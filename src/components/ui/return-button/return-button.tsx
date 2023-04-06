@@ -18,7 +18,7 @@ export const ReturnButton: React.FC<ButtonProps> = ({
       {...rest}
     >
       <ReturnIcon />
-      <p className='text text_type_button text_color_link ml-4'>К оглавлению</p>
+      <p className='text text_type_button text_color_link ml-4'>Back</p>
     </button>
   );
 };
